@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,10 +26,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}>
+        <div className="fixed inset-0 -z-10 w-full h-full">
+          <div className="absolute inset-0 w-full h-full">
+            <Image src="/background.gif" alt="Background" fill priority className="object-cover" />
+          </div>
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-black/60 via-black/80 to-black" />
+        </div>
+        <nav className="w-full flex justify-end py-6 bg-black text-white border-b border-purple-900 mb-8">
+          <ul className="flex gap-8 text-lg font-semibold mr-8">
+            <li><Link href="/" className="hover:text-purple-400">Home</Link></li>
+            <li><Link href="/projects" className="hover:text-purple-400">Projects</Link></li>
+          </ul>
+        </nav>
+        <main className="pt-8 w-full flex flex-col items-center">
+          {children}
+        </main>
       </body>
     </html>
   );
