@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}>
         <div className="fixed inset-0 -z-10 w-full h-full">
           <div className="absolute inset-0 w-full h-full">
-            <Image src="/background.gif" alt="Background" fill priority className="object-cover" />
+            <Image src="/background.gif" alt="Background" fill priority unoptimized className="object-cover" />
           </div>
           <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-black/60 via-black/80 to-black" />
         </div>
